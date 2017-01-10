@@ -27,6 +27,15 @@ define('shit-list/tests/components/add-form.jshint.lint-test', ['exports'], func
     assert.ok(true, 'components/add-form.js should pass jshint.');
   });
 });
+define('shit-list/tests/components/forgive-person.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | components/forgive-person.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/forgive-person.js should pass jshint.');
+  });
+});
 define('shit-list/tests/components/header-nav.jshint.lint-test', ['exports'], function (exports) {
   'use strict';
 
@@ -181,6 +190,44 @@ define('shit-list/tests/integration/components/add-form-test.jshint.lint-test', 
     assert.ok(true, 'integration/components/add-form-test.js should pass jshint.');
   });
 });
+define('shit-list/tests/integration/components/forgive-person-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('forgive-person', 'Integration | Component | forgive person', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template({
+      'id': 'lLxmwidM',
+      'block': '{"statements":[["append",["unknown",["forgive-person"]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template({
+      'id': '/LCSQSCp',
+      'block': '{"statements":[["text","\\n"],["block",["forgive-person"],null,null,0],["text","  "]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      template block text\\n"]],"locals":[]}],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('shit-list/tests/integration/components/forgive-person-test.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | integration/components/forgive-person-test.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/forgive-person-test.js should pass jshint.');
+  });
+});
 define('shit-list/tests/integration/components/header-nav-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
 
   (0, _emberQunit.moduleForComponent)('header-nav', 'Integration | Component | header nav', {
@@ -322,6 +369,28 @@ define('shit-list/tests/test-helper.jshint.lint-test', ['exports'], function (ex
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'test-helper.js should pass jshint.');
+  });
+});
+define('shit-list/tests/unit/controllers/people/person-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('controller:people/person', 'Unit | Controller | people/person', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  // Replace this with your real tests.
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var controller = this.subject();
+    assert.ok(controller);
+  });
+});
+define('shit-list/tests/unit/controllers/people/person-test.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | unit/controllers/people/person-test.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/controllers/people/person-test.js should pass jshint.');
   });
 });
 define('shit-list/tests/unit/models/person-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
