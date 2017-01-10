@@ -3,7 +3,7 @@
 	"file": "shit-list.css",
 	"sourceRoot": "/Users/Madison/Documents/Turing/mod-4/projects/shit-list/app/styles",
 	"sources": [
-		"../../sass_compiler-input_base_path-yLoBU3pQ.tmp/app/styles/app.scss"
+		"../../sass_compiler-input_base_path-Nb8Y0UeN.tmp/app/styles/app.scss"
 	],
 	"sourcesContent": [
 		"\nhtml {\n  background-color: red;\n}\n"
