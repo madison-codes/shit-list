@@ -1,7 +1,5 @@
 <h1>people</h1>
 {{#each model as |person|}}
-  <h1>{{person.name}}</h1>
+  {{#link-to 'people.person' person}}<h1>{{person.name}}</h1>{{/link-to}}
   <h1>{{person.forgiven}}</h1>
-
 {{/each}}
-<!-- {{outlet}} -->
