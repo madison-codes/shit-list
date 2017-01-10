@@ -10,7 +10,7 @@ Router.map(function() {
   this.route('home');
   this.route('new');
   this.route('people', function(){
-    this.route('person', { path: ':person_id'});
+    this.route('person', { path: ':_id'});
   });
 });
 

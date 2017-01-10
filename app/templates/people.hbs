@@ -1,1 +1,16 @@
-<h1>PEOPLE</h1>
+<h1>people</h1>
+<section>
+  <article>
+    {{ people-stats people=model}}
+  </article>
+  <ul>
+    {{#each model as |person|}}
+      <li>
+        {{#link-to 'people.person' person}}
+          <h1>{{person.name}}</h1>
+        {{/link-to}}
+      </li>
+    {{/each}}
+  </ul>
+</section>
+{{outlet}}
