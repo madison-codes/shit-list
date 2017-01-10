@@ -1,5 +1,14 @@
 'use strict';
 
+define('shit-list/tests/adapters/application.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | adapters/application.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'adapters/application.js should pass jshint.');
+  });
+});
 define('shit-list/tests/app.jshint.lint-test', ['exports'], function (exports) {
   'use strict';
 
@@ -107,6 +116,15 @@ define('shit-list/tests/helpers/start-app.jshint.lint-test', ['exports'], functi
     assert.ok(true, 'helpers/start-app.js should pass jshint.');
   });
 });
+define('shit-list/tests/models/person.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | models/person.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'models/person.js should pass jshint.');
+  });
+});
 define('shit-list/tests/resolver.jshint.lint-test', ['exports'], function (exports) {
   'use strict';
 
@@ -136,6 +154,28 @@ define('shit-list/tests/test-helper.jshint.lint-test', ['exports'], function (ex
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'test-helper.js should pass jshint.');
+  });
+});
+define('shit-list/tests/unit/models/person-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForModel)('person', 'Unit | Model | person', {
+    // Specify the other units that are required for this test.
+    needs: []
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var model = this.subject();
+    // let store = this.store();
+    assert.ok(!!model);
+  });
+});
+define('shit-list/tests/unit/models/person-test.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | unit/models/person-test.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/models/person-test.js should pass jshint.');
   });
 });
 /* jshint ignore:start */
