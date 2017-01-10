@@ -246,6 +246,15 @@ define('shit-list/tests/routes/new.jshint.lint-test', ['exports'], function (exp
     assert.ok(true, 'routes/new.js should pass jshint.');
   });
 });
+define('shit-list/tests/routes/people.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | routes/people.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'routes/people.js should pass jshint.');
+  });
+});
 define('shit-list/tests/test-helper', ['exports', 'shit-list/tests/helpers/resolver', 'ember-qunit'], function (exports, _shitListTestsHelpersResolver, _emberQunit) {
 
   (0, _emberQunit.setResolver)(_shitListTestsHelpersResolver['default']);
@@ -300,6 +309,27 @@ define('shit-list/tests/unit/routes/home-test.jshint.lint-test', ['exports'], fu
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/routes/home-test.js should pass jshint.');
+  });
+});
+define('shit-list/tests/unit/routes/people-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('route:people', 'Unit | Route | people', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var route = this.subject();
+    assert.ok(route);
+  });
+});
+define('shit-list/tests/unit/routes/people-test.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | unit/routes/people-test.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/people-test.js should pass jshint.');
   });
 });
 /* jshint ignore:start */

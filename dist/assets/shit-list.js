@@ -286,6 +286,13 @@ define('shit-list/routes/new', ['exports', 'ember'], function (exports, _ember) 
     }
   });
 });
+define('shit-list/routes/people', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Route.extend({
+    model: function model() {
+      return this.store.findAll('person');
+    }
+  });
+});
 define('shit-list/services/ajax', ['exports', 'ember-ajax/services/ajax'], function (exports, _emberAjaxServicesAjax) {
   Object.defineProperty(exports, 'default', {
     enumerable: true,
@@ -310,7 +317,7 @@ define("shit-list/templates/new", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template({ "id": "fjfM2zJQ", "block": "{\"statements\":[[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"text\",\"NEW\"],[\"close-element\"],[\"text\",\"\\n\"],[\"append\",[\"helper\",[\"add-form\"],null,[[\"model\",\"createAction\"],[[\"get\",[\"model\"]],\"addNewPerson\"]]],false],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/new.hbs" } });
 });
 define("shit-list/templates/people", ["exports"], function (exports) {
-  exports["default"] = Ember.HTMLBars.template({ "id": "oWNd0nnY", "block": "{\"statements\":[[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"text\",\"PEOPLE\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/people.hbs" } });
+  exports["default"] = Ember.HTMLBars.template({ "id": "vVUiJJsk", "block": "{\"statements\":[[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"text\",\"people\"],[\"close-element\"],[\"text\",\"\\n\"],[\"block\",[\"each\"],[[\"get\",[\"model\"]]],null,0],[\"comment\",\" {{outlet}} \"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[{\"statements\":[[\"text\",\"  \"],[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"append\",[\"unknown\",[\"person\",\"name\"]],false],[\"close-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"append\",[\"unknown\",[\"person\",\"forgiven\"]],false],[\"close-element\"],[\"text\",\"\\n\\n\"]],\"locals\":[\"person\"]}],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/people.hbs" } });
 });
 define('shit-list/transforms/attachment', ['exports', 'ember-pouch/transforms/attachment'], function (exports, _emberPouchTransformsAttachment) {
   Object.defineProperty(exports, 'default', {
@@ -364,7 +371,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("shit-list/app")["default"].create({"name":"shit-list","version":"0.0.0+496307b6"});
+  require("shit-list/app")["default"].create({"name":"shit-list","version":"0.0.0+d7207b4a"});
 }
 
 /* jshint ignore:end */
