@@ -36,6 +36,15 @@ define('shit-list/tests/components/header-nav.jshint.lint-test', ['exports'], fu
     assert.ok(true, 'components/header-nav.js should pass jshint.');
   });
 });
+define('shit-list/tests/components/people-stats.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | components/people-stats.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/people-stats.js should pass jshint.');
+  });
+});
 define('shit-list/tests/helpers/destroy-app', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = destroyApp;
 
@@ -208,6 +217,44 @@ define('shit-list/tests/integration/components/header-nav-test.jshint.lint-test'
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'integration/components/header-nav-test.js should pass jshint.');
+  });
+});
+define('shit-list/tests/integration/components/people-stats-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('people-stats', 'Integration | Component | people stats', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template({
+      'id': 'nnNSoqSM',
+      'block': '{"statements":[["append",["unknown",["people-stats"]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template({
+      'id': 'ITDGuMSC',
+      'block': '{"statements":[["text","\\n"],["block",["people-stats"],null,null,0],["text","  "]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      template block text\\n"]],"locals":[]}],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('shit-list/tests/integration/components/people-stats-test.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | integration/components/people-stats-test.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/people-stats-test.js should pass jshint.');
   });
 });
 define('shit-list/tests/models/person.jshint.lint-test', ['exports'], function (exports) {

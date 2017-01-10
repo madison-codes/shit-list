@@ -56,6 +56,29 @@ define('shit-list/components/add-form', ['exports', 'ember'], function (exports,
 define('shit-list/components/header-nav', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Component.extend({});
 });
+define('shit-list/components/people-stats', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Component.extend({
+    model: function model() {
+      return this.store.findAll('person');
+    },
+
+    // forgiven: Ember.computed.filterBy('person.forgiven', true),
+    // notForgiven: Ember.computed.filterBy('person','forgiven', false),
+
+    actions: {
+      forgiven: _ember['default'].computed.filterBy('forgiven', true),
+      // all: function(){
+      //   Ember.computed('person');
+      // },
+      notForgiven: function notForgiven() {
+        _ember['default'].computed('person.@each.forgiven', function () {
+          var person = this.get('person');
+          return person.filterBy('forgiven', false);
+        });
+      }
+    }
+  });
+});
 define('shit-list/helpers/app-version', ['exports', 'ember', 'shit-list/config/environment'], function (exports, _ember, _shitListConfigEnvironment) {
   exports.appVersion = appVersion;
   var version = _shitListConfigEnvironment['default'].APP.version;
@@ -246,7 +269,6 @@ define("shit-list/instance-initializers/ember-data", ["exports", "ember-data/-pr
 });
 define('shit-list/models/person', ['exports', 'ember-data', 'ember-pouch'], function (exports, _emberData, _emberPouch) {
   exports['default'] = _emberPouch.Model.extend({
-    // id : DS.attr('number'),
     name: _emberData['default'].attr('string'),
     description: _emberData['default'].attr('string'),
     forgiven: _emberData['default'].attr('boolean', { defaultValue: false }),
@@ -310,6 +332,9 @@ define("shit-list/templates/components/add-form", ["exports"], function (exports
 define("shit-list/templates/components/header-nav", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template({ "id": "m6ja+2su", "block": "{\"statements\":[[\"open-element\",\"nav\",[]],[\"flush-element\"],[\"text\",\"\\n  \"],[\"block\",[\"link-to\"],[\"home\"],null,2],[\"text\",\"\\n  \"],[\"block\",[\"link-to\"],[\"new\"],null,1],[\"text\",\"\\n  \"],[\"block\",[\"link-to\"],[\"people\"],null,0],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[{\"statements\":[[\"text\",\"People\"]],\"locals\":[]},{\"statements\":[[\"text\",\"New\"]],\"locals\":[]},{\"statements\":[[\"text\",\"Home\"]],\"locals\":[]}],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/components/header-nav.hbs" } });
 });
+define("shit-list/templates/components/people-stats", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template({ "id": "F809MJZc", "block": "{\"statements\":[[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"text\",\"PEOPLE STATS\"],[\"close-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"p\",[]],[\"flush-element\"],[\"text\",\"All: \"],[\"append\",[\"unknown\",[\"people\",\"length\"]],false],[\"close-element\"],[\"text\",\"\\n\"],[\"yield\",\"default\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[\"default\"],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/components/people-stats.hbs" } });
+});
 define("shit-list/templates/home", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template({ "id": "GkVHpVSg", "block": "{\"statements\":[[\"append\",[\"unknown\",[\"outlet\"]],false],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/home.hbs" } });
 });
@@ -317,7 +342,7 @@ define("shit-list/templates/new", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template({ "id": "fjfM2zJQ", "block": "{\"statements\":[[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"text\",\"NEW\"],[\"close-element\"],[\"text\",\"\\n\"],[\"append\",[\"helper\",[\"add-form\"],null,[[\"model\",\"createAction\"],[[\"get\",[\"model\"]],\"addNewPerson\"]]],false],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/new.hbs" } });
 });
 define("shit-list/templates/people", ["exports"], function (exports) {
-  exports["default"] = Ember.HTMLBars.template({ "id": "NzHiQama", "block": "{\"statements\":[[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"text\",\"people\"],[\"close-element\"],[\"text\",\"\\n\"],[\"block\",[\"each\"],[[\"get\",[\"model\"]]],null,1]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[{\"statements\":[[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"append\",[\"unknown\",[\"person\",\"name\"]],false],[\"close-element\"]],\"locals\":[]},{\"statements\":[[\"text\",\"  \"],[\"block\",[\"link-to\"],[\"people.person\",[\"get\",[\"person\"]]],null,0],[\"text\",\"\\n  \"],[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"append\",[\"unknown\",[\"person\",\"forgiven\"]],false],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[\"person\"]}],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/people.hbs" } });
+  exports["default"] = Ember.HTMLBars.template({ "id": "FlrPNv+n", "block": "{\"statements\":[[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"text\",\"people\"],[\"close-element\"],[\"text\",\"\\n\"],[\"append\",[\"helper\",[\"people-stats\"],null,[[\"people\"],[[\"get\",[\"model\"]]]]],false],[\"text\",\"\\n\"],[\"block\",[\"each\"],[[\"get\",[\"model\"]]],null,1]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[{\"statements\":[[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"append\",[\"unknown\",[\"person\",\"name\"]],false],[\"close-element\"]],\"locals\":[]},{\"statements\":[[\"text\",\"  \"],[\"block\",[\"link-to\"],[\"people.person\",[\"get\",[\"person\"]]],null,0],[\"text\",\"\\n  \"],[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"append\",[\"unknown\",[\"person\",\"forgiven\"]],false],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[\"person\"]}],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/people.hbs" } });
 });
 define("shit-list/templates/people/person", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template({ "id": "kX92uqTU", "block": "{\"statements\":[[\"open-element\",\"article\",[]],[\"static-attr\",\"class\",\"clicked-reminder\"],[\"flush-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"p\",[]],[\"flush-element\"],[\"text\",\"MEEEEEEEEEEE\"],[\"close-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"p\",[]],[\"flush-element\"],[\"append\",[\"unknown\",[\"people\",\"person\",\"id\"]],false],[\"close-element\"],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/people/person.hbs" } });
@@ -374,7 +399,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("shit-list/app")["default"].create({"name":"shit-list","version":"0.0.0+d86570db"});
+  require("shit-list/app")["default"].create({"name":"shit-list","version":"0.0.0+6097b231"});
 }
 
 /* jshint ignore:end */
