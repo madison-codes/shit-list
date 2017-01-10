@@ -6,35 +6,21 @@
 
 /* jshint ignore:end */
 
-define('shit-list/adapters/application', ['exports', 'ember-pouch', 'pouchdb', 'shit-list/config/environment', 'ember'], function (exports, _emberPouch, _pouchdb, _shitListConfigEnvironment, _ember) {
-  var assert = _ember['default'].assert;
-  var isEmpty = _ember['default'].isEmpty;
+define('shit-list/adapters/application', ['exports', 'pouchdb', 'ember-pouch'], function (exports, _pouchdb, _emberPouch) {
 
-  function createDb() {
-    var localDb = _shitListConfigEnvironment['default'].emberPouch.localDb;
+   _pouchdb['default'].debug.enable('*');
 
-    assert('https://madisonkerndt.cloudant.com/shit-list', !isEmpty(localDb));
+   var remote = new _pouchdb['default']('https://madisonkerndt.cloudant.com/shit-list');
+   var db = new _pouchdb['default']('local_pouch');
 
-    var db = new _pouchdb['default'](localDb);
+   db.sync(remote, {
+      live: true,
+      retry: true
+   });
 
-    if (_shitListConfigEnvironment['default'].emberPouch.remoteDb) {
-      var remoteDb = new _pouchdb['default'](_shitListConfigEnvironment['default'].emberPouch.remoteDb);
-
-      db.sync(remoteDb, {
-        live: true,
-        retry: true
-      });
-    }
-
-    return db;
-  }
-
-  exports['default'] = _emberPouch.Adapter.extend({
-    init: function init() {
-      this._super.apply(this, arguments);
-      this.set('db', createDb());
-    }
-  });
+   exports['default'] = _emberPouch.Adapter.extend({
+      db: db
+   });
 });
 define('shit-list/app', ['exports', 'ember', 'shit-list/resolver', 'ember-load-initializers', 'shit-list/config/environment'], function (exports, _ember, _shitListResolver, _emberLoadInitializers, _shitListConfigEnvironment) {
 
@@ -248,7 +234,7 @@ define("shit-list/instance-initializers/ember-data", ["exports", "ember-data/-pr
 });
 define('shit-list/models/person', ['exports', 'ember-data', 'ember-pouch'], function (exports, _emberData, _emberPouch) {
   exports['default'] = _emberPouch.Model.extend({
-    id: _emberData['default'].attr('number'),
+    // id : DS.attr('number'),
     name: _emberData['default'].attr('string'),
     description: _emberData['default'].attr('string'),
     forgiven: _emberData['default'].attr('boolean', { defaultValue: false }),
@@ -353,7 +339,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("shit-list/app")["default"].create({"name":"shit-list","version":"0.0.1+272ad5de"});
+  require("shit-list/app")["default"].create({"name":"shit-list","version":"0.0.0+26929a14"});
 }
 
 /* jshint ignore:end */
