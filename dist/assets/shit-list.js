@@ -6,6 +6,36 @@
 
 /* jshint ignore:end */
 
+define('shit-list/adapters/application', ['exports', 'ember-pouch', 'pouchdb', 'shit-list/config/environment', 'ember'], function (exports, _emberPouch, _pouchdb, _shitListConfigEnvironment, _ember) {
+  var assert = _ember['default'].assert;
+  var isEmpty = _ember['default'].isEmpty;
+
+  function createDb() {
+    var localDb = _shitListConfigEnvironment['default'].emberPouch.localDb;
+
+    assert('https://madisonkerndt.cloudant.com/shit-list', !isEmpty(localDb));
+
+    var db = new _pouchdb['default'](localDb);
+
+    if (_shitListConfigEnvironment['default'].emberPouch.remoteDb) {
+      var remoteDb = new _pouchdb['default'](_shitListConfigEnvironment['default'].emberPouch.remoteDb);
+
+      db.sync(remoteDb, {
+        live: true,
+        retry: true
+      });
+    }
+
+    return db;
+  }
+
+  exports['default'] = _emberPouch.Adapter.extend({
+    init: function init() {
+      this._super.apply(this, arguments);
+      this.set('db', createDb());
+    }
+  });
+});
 define('shit-list/app', ['exports', 'ember', 'shit-list/resolver', 'ember-load-initializers', 'shit-list/config/environment'], function (exports, _ember, _shitListResolver, _emberLoadInitializers, _shitListConfigEnvironment) {
 
   var App = undefined;
@@ -210,6 +240,15 @@ define("shit-list/instance-initializers/ember-data", ["exports", "ember-data/-pr
     initialize: _emberDataPrivateInstanceInitializersInitializeStoreService["default"]
   };
 });
+define('shit-list/models/person', ['exports', 'ember-data', 'ember-pouch'], function (exports, _emberData, _emberPouch) {
+  exports['default'] = _emberPouch.Model.extend({
+    id: _emberData['default'].attr('number'),
+    name: _emberData['default'].attr('string'),
+    description: _emberData['default'].attr('string'),
+    forgiven: _emberData['default'].attr('boolean', { defaultValue: false }),
+    rev: _emberData['default'].attr('string')
+  });
+});
 define('shit-list/resolver', ['exports', 'ember-resolver'], function (exports, _emberResolver) {
   exports['default'] = _emberResolver['default'];
 });
@@ -229,6 +268,22 @@ define('shit-list/services/ajax', ['exports', 'ember-ajax/services/ajax'], funct
     enumerable: true,
     get: function get() {
       return _emberAjaxServicesAjax['default'];
+    }
+  });
+});
+define('shit-list/transforms/attachment', ['exports', 'ember-pouch/transforms/attachment'], function (exports, _emberPouchTransformsAttachment) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberPouchTransformsAttachment['default'];
+    }
+  });
+});
+define('shit-list/transforms/attachments', ['exports', 'ember-pouch/transforms/attachments'], function (exports, _emberPouchTransformsAttachments) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberPouchTransformsAttachments['default'];
     }
   });
 });
@@ -268,7 +323,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("shit-list/app")["default"].create({"name":"shit-list","version":"0.0.1+10724a5d"});
+  require("shit-list/app")["default"].create({"name":"shit-list","version":"0.0.1+1ccd19b8"});
 }
 
 /* jshint ignore:end */
