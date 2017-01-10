@@ -5,8 +5,8 @@ export default Ember.Route.extend({
     return this.get('store').findRecord('person', params._id);
   },
   actions: {
-    updatePerson: function(forgivenPerson){
-      forgivenPerson.save();
+    updatePerson: function(){
+      console.log('routes', 'forgiven');
     }
   }
 });

@@ -55,12 +55,12 @@ define('shit-list/components/add-form', ['exports', 'ember'], function (exports,
 });
 define('shit-list/components/forgive-person', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Component.extend({
-    // actions: {
-    //   forgive: function() {
-    //     const forgivenPerson = this.toggleProperty('forgiven');
-    //     this.sendAction('createAction', forgivenPerson);
-    //   }
-    // }
+    actions: {
+      forgive: function forgive() {
+        console.log('component', 'forgiven');
+        this.sendAction('createAction');
+      }
+    }
   });
 });
 define('shit-list/components/header-nav', ['exports', 'ember'], function (exports, _ember) {
@@ -331,8 +331,8 @@ define('shit-list/routes/people/person', ['exports', 'ember'], function (exports
       return this.get('store').findRecord('person', params._id);
     },
     actions: {
-      updatePerson: function updatePerson(forgivenPerson) {
-        forgivenPerson.save();
+      updatePerson: function updatePerson() {
+        console.log('routes', 'forgiven');
       }
     }
   });
@@ -352,7 +352,7 @@ define("shit-list/templates/components/add-form", ["exports"], function (exports
   exports["default"] = Ember.HTMLBars.template({ "id": "9UlClXFE", "block": "{\"statements\":[[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"text\",\"add form\"],[\"close-element\"],[\"text\",\"\\n\"],[\"open-element\",\"section\",[]],[\"flush-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"form\",[]],[\"static-attr\",\"class\",\"add-new-reminder\"],[\"modifier\",[\"action\"],[[\"get\",[null]],\"addPerson\",[\"get\",[\"model\"]]],[[\"on\"],[\"submit\"]]],[\"flush-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"text\",\"Who has wronged you today?\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"label\",[]],[\"flush-element\"],[\"text\",\"\\n      Name\\n      \"],[\"append\",[\"helper\",[\"input\"],null,[[\"value\",\"type\",\"name\"],[[\"get\",[\"name\"]],\"text\",\"name\"]]],false],[\"text\",\"\\n    \"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"label\",[]],[\"flush-element\"],[\"text\",\"\\n      Description\\n      \"],[\"append\",[\"helper\",[\"input\"],null,[[\"value\",\"type\",\"description\"],[[\"get\",[\"description\"]],\"text\",\"description\"]]],false],[\"text\",\"\\n    \"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"button\",[]],[\"static-attr\",\"class\",\"add-new-person-button\"],[\"flush-element\"],[\"text\",\"Submit\"],[\"close-element\"],[\"text\",\"\\n  \"],[\"close-element\"],[\"text\",\"\\n  \"],[\"append\",[\"unknown\",[\"outlet\"]],false],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"],[\"yield\",\"default\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[\"default\"],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/components/add-form.hbs" } });
 });
 define("shit-list/templates/components/forgive-person", ["exports"], function (exports) {
-  exports["default"] = Ember.HTMLBars.template({ "id": "tfH4EtWV", "block": "{\"statements\":[[\"comment\",\" <button{{action 'forgive' model}}>Forgive</button> \"],[\"text\",\"\\n\"],[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"text\",\"forgiven\"],[\"close-element\"],[\"text\",\"\\n\"],[\"yield\",\"default\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[\"default\"],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/components/forgive-person.hbs" } });
+  exports["default"] = Ember.HTMLBars.template({ "id": "mGsyEi20", "block": "{\"statements\":[[\"open-element\",\"button\",[]],[\"modifier\",[\"action\"],[[\"get\",[null]],\"forgive\",[\"get\",[\"model\"]]]],[\"flush-element\"],[\"text\",\"Forgive\"],[\"close-element\"],[\"text\",\"\\n\"],[\"comment\",\" <h1>forgiven</h1> \"],[\"text\",\"\\n\"],[\"yield\",\"default\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[\"default\"],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/components/forgive-person.hbs" } });
 });
 define("shit-list/templates/components/header-nav", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template({ "id": "m6ja+2su", "block": "{\"statements\":[[\"open-element\",\"nav\",[]],[\"flush-element\"],[\"text\",\"\\n  \"],[\"block\",[\"link-to\"],[\"home\"],null,2],[\"text\",\"\\n  \"],[\"block\",[\"link-to\"],[\"new\"],null,1],[\"text\",\"\\n  \"],[\"block\",[\"link-to\"],[\"people\"],null,0],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[{\"statements\":[[\"text\",\"People\"]],\"locals\":[]},{\"statements\":[[\"text\",\"New\"]],\"locals\":[]},{\"statements\":[[\"text\",\"Home\"]],\"locals\":[]}],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/components/header-nav.hbs" } });
@@ -370,7 +370,7 @@ define("shit-list/templates/people", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template({ "id": "0JsibMUA", "block": "{\"statements\":[[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"text\",\"people\"],[\"close-element\"],[\"text\",\"\\n\"],[\"open-element\",\"section\",[]],[\"flush-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"article\",[]],[\"flush-element\"],[\"text\",\"\\n    \"],[\"append\",[\"helper\",[\"people-stats\"],null,[[\"people\"],[[\"get\",[\"model\"]]]]],false],[\"text\",\"\\n  \"],[\"close-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"ul\",[]],[\"flush-element\"],[\"text\",\"\\n\"],[\"block\",[\"each\"],[[\"get\",[\"model\"]]],null,1],[\"text\",\"  \"],[\"close-element\"],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"],[\"append\",[\"unknown\",[\"outlet\"]],false],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[{\"statements\":[[\"text\",\"          \"],[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"append\",[\"unknown\",[\"person\",\"name\"]],false],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[]},{\"statements\":[[\"text\",\"      \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"\\n\"],[\"block\",[\"link-to\"],[\"people.person\",[\"get\",[\"person\"]]],null,0],[\"text\",\"      \"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[\"person\"]}],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/people.hbs" } });
 });
 define("shit-list/templates/people/person", ["exports"], function (exports) {
-  exports["default"] = Ember.HTMLBars.template({ "id": "gHIkW6wx", "block": "{\"statements\":[[\"open-element\",\"article\",[]],[\"flush-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"p\",[]],[\"flush-element\"],[\"text\",\"Title: \"],[\"append\",[\"unknown\",[\"model\",\"name\"]],false],[\"close-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"p\",[]],[\"flush-element\"],[\"text\",\"Description: \"],[\"append\",[\"unknown\",[\"model\",\"description\"]],false],[\"close-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"p\",[]],[\"flush-element\"],[\"text\",\"Forgiven: \"],[\"append\",[\"unknown\",[\"model\",\"forgiven\"]],false],[\"close-element\"],[\"text\",\"\\n  \"],[\"append\",[\"unknown\",[\"forgive-person\"]],false],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/people/person.hbs" } });
+  exports["default"] = Ember.HTMLBars.template({ "id": "qTJiaX67", "block": "{\"statements\":[[\"open-element\",\"article\",[]],[\"flush-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"p\",[]],[\"flush-element\"],[\"text\",\"Title: \"],[\"append\",[\"unknown\",[\"model\",\"name\"]],false],[\"close-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"p\",[]],[\"flush-element\"],[\"text\",\"Description: \"],[\"append\",[\"unknown\",[\"model\",\"description\"]],false],[\"close-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"p\",[]],[\"flush-element\"],[\"text\",\"Forgiven: \"],[\"append\",[\"unknown\",[\"model\",\"forgiven\"]],false],[\"close-element\"],[\"text\",\"\\n  \"],[\"append\",[\"helper\",[\"forgive-person\"],[[\"get\",[\"model\"]]],[[\"createAction\"],[\"updatePerson\"]]],false],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/people/person.hbs" } });
 });
 define('shit-list/transforms/attachment', ['exports', 'ember-pouch/transforms/attachment'], function (exports, _emberPouchTransformsAttachment) {
   Object.defineProperty(exports, 'default', {
@@ -424,7 +424,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("shit-list/app")["default"].create({"name":"shit-list","version":"0.0.0+f0bf9cdc"});
+  require("shit-list/app")["default"].create({"name":"shit-list","version":"0.0.0+b6537b01"});
 }
 
 /* jshint ignore:end */
