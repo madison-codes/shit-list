@@ -42,9 +42,21 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
-  if (environment === 'production') {
+  ENV.remote_couch = 'https://madisonkerndt.cloudant.com/shit-list';
+    ENV.local_couch = 'shit-list';
+    if (environment === 'production') {
+      ENV.rootURL = '/';
+      ENV.remote_couch = 'https://madisonkerndt.cloudant.com/shit-list';
+      ENV['ember-simple-auth'] = {
+        authenticationRoute: 'index',
+        routeAfterAuthentication: 'home',
+        routeIfAlreadyAuthenticated: 'home'
+      };
+    }
 
-  }
+    ENV.contentSecurityPolicy = {
+      "connect-src": "'self' https://madisonkerndt.cloudant.com/shit-list"
+    };
 
   return ENV;
 };

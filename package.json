@@ -1,6 +1,6 @@
 {
   "name": "shit-list",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Keep track of all of the people on your shit list with this app",
   "license": "MIT",
   "author": "",
@@ -13,6 +13,9 @@
     "build": "ember build",
     "start": "ember server",
     "test": "ember test"
+  },
+  "dependencies":{
+    "ember-getowner-polyfill": "1.1.1"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",

@@ -1,32 +1,16 @@
-import { Adapter } from 'ember-pouch';
 import PouchDB from 'pouchdb';
-import config from 'shit-list/config/environment';
-import Ember from 'ember';
+import { Adapter } from 'ember-pouch';
 
-const { assert, isEmpty } = Ember;
+PouchDB.debug.enable('*');
 
-function createDb() {
-  let localDb = config.emberPouch.localDb;
+let remote = new PouchDB('https://madisonkerndt.cloudant.com/shit-list');
+let db = new PouchDB('local_pouch');
 
-  assert('https://madisonkerndt.cloudant.com/shit-list', !isEmpty(localDb));
-
-  let db = new PouchDB(localDb);
-
-  if (config.emberPouch.remoteDb) {
-    let remoteDb = new PouchDB(config.emberPouch.remoteDb);
-
-    db.sync(remoteDb, {
-      live: true,
-      retry: true
-    });
-  }
-
-  return db;
-}
+db.sync(remote, {
+   live: true,
+   retry: true
+});
 
 export default Adapter.extend({
-  init() {
-    this._super(...arguments);
-    this.set('db', createDb());
-  }
+  db: db
 });

@@ -111895,6 +111895,16 @@ define("ember-data/version", ["exports"], function (exports) {
 
   exports["default"] = "2.11.0";
 });
+define("ember-getowner-polyfill/index", ["exports", "ember"], function (exports, _ember) {
+  "use strict";
+
+  _ember["default"].deprecate("ember-getowner-polyfill is now a true polyfill. Use Ember.getOwner directly instead of importing from ember-getowner-polyfill", false, {
+    id: "ember-getowner-polyfill.import",
+    until: '2.0.0'
+  });
+
+  exports["default"] = _ember["default"].getOwner;
+});
 define("ember-inflector/index", ["exports", "ember", "ember-inflector/lib/system", "ember-inflector/lib/ext/string"], function (exports, _ember, _emberInflectorLibSystem, _emberInflectorLibExtString) {
   /* global define, module */
 

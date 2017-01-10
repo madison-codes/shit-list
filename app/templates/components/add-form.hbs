@@ -1,2 +1,17 @@
-<h1>HEY</h1>
+<h1>add form</h1>
+<section>
+  <form class="add-new-reminder" {{action 'addPerson' model on='submit'}}>
+    <h1>Who has wronged you today?</h1>
+    <label>
+      Name
+      {{input value=name type="text" name="name"}}
+    </label>
+    <label>
+      Description
+      {{input value=description type="text" description="description"}}
+    </label>
+    <button class="add-new-person-button">Submit</button>
+  </form>
+  {{outlet}}
+</section>
 {{yield}}
