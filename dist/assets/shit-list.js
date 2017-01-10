@@ -52,6 +52,9 @@ define('shit-list/app', ['exports', 'ember', 'shit-list/resolver', 'ember-load-i
 
   exports['default'] = App;
 });
+define('shit-list/components/add-form', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Component.extend({});
+});
 define('shit-list/helpers/app-version', ['exports', 'ember', 'shit-list/config/environment'], function (exports, _ember, _shitListConfigEnvironment) {
   exports.appVersion = appVersion;
   var version = _shitListConfigEnvironment['default'].APP.version;
@@ -271,6 +274,12 @@ define('shit-list/services/ajax', ['exports', 'ember-ajax/services/ajax'], funct
     }
   });
 });
+define("shit-list/templates/application", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template({ "id": "jyGJCIvK", "block": "{\"statements\":[[\"open-element\",\"header\",[]],[\"flush-element\"],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"],[\"open-element\",\"body\",[]],[\"flush-element\"],[\"text\",\"\\n  \"],[\"append\",[\"unknown\",[\"add-form\"]],false],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"],[\"open-element\",\"footer\",[]],[\"flush-element\"],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/application.hbs" } });
+});
+define("shit-list/templates/components/add-form", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template({ "id": "6d2fH/Zl", "block": "{\"statements\":[[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"text\",\"HEYO\"],[\"close-element\"],[\"text\",\"\\n\"],[\"yield\",\"default\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[\"default\"],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "shit-list/templates/components/add-form.hbs" } });
+});
 define('shit-list/transforms/attachment', ['exports', 'ember-pouch/transforms/attachment'], function (exports, _emberPouchTransformsAttachment) {
   Object.defineProperty(exports, 'default', {
     enumerable: true,
@@ -323,7 +332,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("shit-list/app")["default"].create({"name":"shit-list","version":"0.0.1+1ccd19b8"});
+  require("shit-list/app")["default"].create({"name":"shit-list","version":"0.0.1+00fbc075"});
 }
 
 /* jshint ignore:end */
