@@ -17,13 +17,16 @@ nav {
 }
 
 nav a{
-  color: $color-pop;
+  color: $color-main-light;
   text-decoration: none;
   cursor: pointer;
   font-size: 3rem;
   padding: 20px;
   &:visited {
-    color: darken($color-pop, 10%);
+    color: $color-compliment;
+  }
+  &:hover {
+    color: $color-pop;
   }
 }
 

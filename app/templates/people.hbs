@@ -1,13 +1,13 @@
-<h1>people</h1>
-<section>
-  <article>
+<section id="people-list" role="list">
+  <article id="people-stats">
     {{ people-stats people=model}}
   </article>
+  <h1>Hated people</h1>
   <ul>
     {{#each model as |person|}}
       <li>
         {{#link-to 'people.person' person}}
-          <h1>{{person.name}}</h1>
+          <p>{{person.name}}</p>
         {{/link-to}}
       </li>
     {{/each}}

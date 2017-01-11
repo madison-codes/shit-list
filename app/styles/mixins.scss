@@ -1,0 +1,31 @@
+@import 'variables';
+
+@mixin main-view($bookends){
+  margin: 0;
+  padding: 0;
+  height: calc(100vh - $bookends);
+  width: 100vw;
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin titles($size){
+  padding: 0;
+  margin: 0;
+  font-size: $size;
+}
+
+@mixin button($width, $height){
+  padding: 30px;
+  height: $height;
+  width: $width;
+  display: block;
+  font-size: 3rem;
+  background-color: $color-pop;
+  color: black;
+  border: none;
+  &:hover{
+    opacity: .8;
+  }
+}

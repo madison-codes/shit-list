@@ -2,25 +2,16 @@
 @import 'mixins';
 
 #new {
-  margin: 0;
-  padding: 0;
-  height: calc(100vh - 370px);
-  width: 100vw;
-  color: black;
-  display: flex;
-  flex-direction: column;
+  @include main-view(370px);
 }
 
 #new h1{
-  padding: 0;
-  margin: 0;
-  font-size: 5rem;
+  @include titles(5rem);
 }
 
 #new h2{
-  padding: 0;
+  @include titles(2.7rem);
   margin-top: 40px;
-  font-size: 2.7rem;
 }
 
 #new label {
@@ -55,16 +46,6 @@ input {
 
 #new button {
   position: absolute;
-  display: block;
   bottom: 0;
-  width: 100vw;
-  height: 200px;
-  font-size: 3rem;
-  background-color: $color-pop;
-  color: black;
-  border: none;
-  padding: 30px;
-  &:hover{
-    opacity: .8;
-  }
+  @include button(100vw, 200px);
 }

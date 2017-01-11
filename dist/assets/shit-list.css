@@ -15,13 +15,15 @@ nav {
   align-items: flex-end; }
 
 nav a {
-  color: #C91F0E;
+  color: #FFFFFF;
   text-decoration: none;
   cursor: pointer;
   font-size: 3rem;
   padding: 20px; }
   nav a:visited {
-    color: #99180b; }
+    color: #C0C0C0; }
+  nav a:hover {
+    color: #C91F0E; }
 
 .active {
   text-decoration: underline; }
@@ -29,7 +31,7 @@ nav a {
 #new {
   margin: 0;
   padding: 0;
-  height: calc(100vh - 370px);
+  height: calc(100vh - $bookends);
   width: 100vw;
   color: black;
   display: flex;
@@ -42,8 +44,9 @@ nav a {
 
 #new h2 {
   padding: 0;
-  margin-top: 40px;
-  font-size: 2.7rem; }
+  margin: 0;
+  font-size: 2.7rem;
+  margin-top: 40px; }
 
 #new label {
   border-radius: 10px;
@@ -74,17 +77,89 @@ input {
 
 #new button {
   position: absolute;
-  display: block;
   bottom: 0;
-  width: 100vw;
+  padding: 30px;
   height: 200px;
+  width: 100vw;
+  display: block;
+  font-size: 3rem;
+  background-color: #C91F0E;
+  color: black;
+  border: none; }
+  #new button:hover {
+    opacity: .8; }
+
+#people-list {
+  margin: 0;
+  padding: 0;
+  height: calc(100vh - $bookends);
+  width: 100vw;
+  color: black;
+  display: flex;
+  flex-direction: column; }
+
+#people-stats {
+  height: 80px;
+  width: 100vw;
+  display: block;
+  background-color: #C91F0E;
+  color: black;
+  padding-left: 40px; }
+
+#people-list h1 {
+  padding: 0;
+  margin: 0;
+  font-size: 4rem;
+  margin: auto;
+  padding: 30px; }
+
+ul {
+  background-color: #222222;
+  border-radius: 30px;
+  padding: 40px;
+  color: #FFFFFF;
+  width: 80vw;
+  height: 60vh;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  list-style: none;
+  overflow-y: scroll; }
+
+#people-list a {
+  font-size: 3rem;
+  color: #FFFFFF;
+  text-decoration: none;
+  cursor: pointer; }
+  #people-list a:visited {
+    color: #C0C0C0; }
+  #people-list a:hover {
+    color: #C91F0E; }
+
+.selected-person {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  height: 300px;
+  width: 100vw;
+  padding: 30px;
+  margin: 0;
+  font-size: 3rem;
+  color: black; }
+
+.forgive-button {
+  position: absolute;
+  bottom: 0;
+  height: 100px;
+  width: 100vw;
+  display: block;
   font-size: 3rem;
   background-color: #C91F0E;
   color: black;
   border: none;
-  padding: 30px; }
-  #new button:hover {
-    opacity: .8; }
+  margin: 0; }
 
 html {
   font-family: 'Exo 2', sans-serif;
