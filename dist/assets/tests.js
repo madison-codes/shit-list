@@ -1,5 +1,29 @@
 'use strict';
 
+define("shit-list/tests/acceptance/person-list-test", ["exports"], function (exports) {});
+// import { test } from 'qunit';
+// import moduleForAcceptance from 'remember/tests/helpers/module-for-acceptance';
+//
+// import Ember from 'ember';
+//
+// moduleForAcceptance('Acceptance | reminders list', {
+//   beforeEach() {
+//     server.createList('reminder', 5);
+//     visit('/');
+//   },
+//   afterEach() {
+//     server.shutdown();
+//   }
+// });
+define('shit-list/tests/acceptance/person-list-test.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | acceptance/person-list-test.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'acceptance/person-list-test.js should pass jshint.');
+  });
+});
 define('shit-list/tests/adapters/application.jshint.lint-test', ['exports'], function (exports) {
   'use strict';
 

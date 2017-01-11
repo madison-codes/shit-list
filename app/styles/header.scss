@@ -1,0 +1,32 @@
+header {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 170px;
+  position: relative;
+  background-color: $color-main-dark;
+}
+
+nav {
+  margin-top: 30px;
+  position: absolute;
+  right: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+nav a{
+  color: $color-pop;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 3rem;
+  padding: 20px;
+  &:visited {
+    color: darken($color-pop, 10%);
+  }
+}
+
+.active {
+  text-decoration: underline;
+}
