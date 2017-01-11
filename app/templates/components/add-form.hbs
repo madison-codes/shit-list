@@ -1,16 +1,13 @@
-<h1>add form</h1>
-<section>
+<section aria-describeBy='form'>
   <form class="add-new-reminder" {{action 'addPerson' model on='submit'}}>
-    <h1>Who has wronged you today?</h1>
+    <h2>Who has wronged you today?</h2>
     <label>
-      Name
-      {{input value=name type="text" name="name"}}
+      {{input value=name type="text" name="name" placeholder='name'}}
     </label>
     <label>
-      Description
-      {{input value=description type="text" description="description"}}
+      {{input value=description type="text" description="description" placeholder='description'}}
     </label>
-    <button class="add-new-person-button">Submit</button>
+    <button role='button' aria-labelledby="submitButton" class="add-new-person-button">Submit</button>
   </form>
   {{outlet}}
 </section>

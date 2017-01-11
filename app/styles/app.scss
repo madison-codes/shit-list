@@ -1,4 +1,12 @@
+@import 'variables';
+@import 'mixins';
+@import 'header';
+@import 'new';
+@import 'people';
 
 html {
-  background-color: red;
+  font-family: 'Exo 2', sans-serif;
+  background-color: $color-compliment;
+  margin: 0;
+  padding: 0;
 }

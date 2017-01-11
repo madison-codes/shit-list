@@ -8,16 +8,19 @@ export default Ember.Component.extend({
   // forgiven: Ember.computed.filterBy('person.forgiven', true),
   // notForgiven: Ember.computed.filterBy('person','forgiven', false),
 
+  // forgiven: Ember.computed('person.@each.forgiven', function() {
+  //         var person = this.get('person');
+  //         return person.filterBy('forgiven', true);
+  //       }),
   actions: {
-    forgiven: Ember.computed.filterBy('forgiven', true),
     // all: function(){
     //   Ember.computed('person');
     // },
-    notForgiven: function(){
-      Ember.computed('person.@each.forgiven', function() {
-        var person = this.get('person');
-        return person.filterBy('forgiven', false);
-      });
-    }
+    // forgiven: function(){
+    //   Ember.computed('person.@each.forgiven', function() {
+    //     var person = this.get('person');
+    //     return person.filterBy('forgiven', true);
+    //   });
+    // }
   }
 });

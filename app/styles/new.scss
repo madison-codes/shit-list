@@ -1,0 +1,51 @@
+@import 'variables';
+@import 'mixins';
+
+#new {
+  @include main-view(370px);
+}
+
+#new h1{
+  @include titles(5rem);
+}
+
+#new h2{
+  @include titles(2.7rem);
+  margin-top: 40px;
+}
+
+#new label {
+  border-radius: 10px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+}
+
+input {
+  border: none;
+  outline: none;
+  height: 80px;
+  width: 50vw;
+}
+
+.add-new-reminder {
+  background-color: $color-main-dark;
+  border-radius: 30px;
+  padding: 40px;
+  color: $color-main-light;
+  width: 80vw;
+  height: 500px;
+  margin: auto;
+  margin-top: 20vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+#new button {
+  position: absolute;
+  bottom: 0;
+  @include button(100vw, 200px);
+}

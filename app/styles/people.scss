@@ -1,0 +1,75 @@
+@import 'variables';
+@import 'mixins';
+
+#people-list {
+  @include main-view(240px);
+}
+
+#people-stats {
+  height: 80px;
+  width: 100vw;
+  display: block;
+  background-color: $color-pop;
+  color: black;
+  padding-left: 40px;
+}
+
+#people-list h1{
+  @include titles(4rem);
+  margin: auto;
+  padding: 30px;
+}
+
+ul {
+  background-color: $color-main-dark;
+  border-radius: 30px;
+  padding: 40px;
+  color: $color-main-light;
+  width: 80vw;
+  height: 60vh;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  list-style: none;
+  overflow-y: scroll;
+}
+
+#people-list a {
+  font-size: 3rem;
+  color: $color-main-light;
+  text-decoration: none;
+  cursor: pointer;
+  &:visited {
+    color: $color-compliment;
+  }
+  &:hover {
+    color: $color-pop;
+  }
+}
+
+.selected-person {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  height: 300px;
+  width: 100vw;
+  padding: 30px;
+  margin: 0;
+  font-size: 3rem;
+  color: black;
+}
+
+.forgive-button {
+  position: absolute;
+  bottom: 0;
+  height: 100px;
+  width: 100vw;
+  display: block;
+  font-size: 3rem;
+  background-color: $color-pop;
+  color: black;
+  border: none;
+  margin: 0;
+}
