@@ -23,9 +23,6 @@ install: # Install dependencies
 - npm install
 - bower install
 
-script: # run tests
-- ember test
-
 # This is in script for 2 reasons:
 # after_script doesn't fail the build
 # deploy provider script doesn't give us the same context
