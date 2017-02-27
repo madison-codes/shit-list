@@ -3,12 +3,12 @@
 	"file": "shit-list.css",
 	"sourceRoot": "/Users/Madison/Documents/Turing/mod-4/projects/shit-list/app/styles",
 	"sources": [
-		"../../sass_compiler-input_base_path-0DjrIGvD.tmp/app/styles/app.scss",
-		"../../sass_compiler-input_base_path-0DjrIGvD.tmp/app/styles/variables.scss",
-		"../../sass_compiler-input_base_path-0DjrIGvD.tmp/app/styles/mixins.scss",
-		"../../sass_compiler-input_base_path-0DjrIGvD.tmp/app/styles/header.scss",
-		"../../sass_compiler-input_base_path-0DjrIGvD.tmp/app/styles/new.scss",
-		"../../sass_compiler-input_base_path-0DjrIGvD.tmp/app/styles/people.scss"
+		"../../sass_compiler-input_base_path-xrwW0z6q.tmp/app/styles/app.scss",
+		"../../sass_compiler-input_base_path-xrwW0z6q.tmp/app/styles/variables.scss",
+		"../../sass_compiler-input_base_path-xrwW0z6q.tmp/app/styles/mixins.scss",
+		"../../sass_compiler-input_base_path-xrwW0z6q.tmp/app/styles/header.scss",
+		"../../sass_compiler-input_base_path-xrwW0z6q.tmp/app/styles/new.scss",
+		"../../sass_compiler-input_base_path-xrwW0z6q.tmp/app/styles/people.scss"
 	],
 	"sourcesContent": [
 		"@import 'variables';\n@import 'mixins';\n@import 'header';\n@import 'new';\n@import 'people';\n\nhtml {\n  font-family: 'Exo 2', sans-serif;\n  background-color: $color-compliment;\n  margin: 0;\n  padding: 0;\n}\n",

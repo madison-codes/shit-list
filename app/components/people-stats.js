@@ -24,3 +24,6 @@ export default Ember.Component.extend({
     // }
   }
 });
+
+
+// this.getProerties 

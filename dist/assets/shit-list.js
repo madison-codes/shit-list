@@ -91,6 +91,8 @@ define('shit-list/components/people-stats', ['exports', 'ember'], function (expo
       // }
     }
   });
+
+  // this.getProerties
 });
 define('shit-list/helpers/app-version', ['exports', 'ember', 'shit-list/config/environment'], function (exports, _ember, _shitListConfigEnvironment) {
   exports.appVersion = appVersion;
@@ -426,7 +428,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("shit-list/app")["default"].create({"name":"shit-list","version":"0.0.0+c42a5922"});
+  require("shit-list/app")["default"].create({"name":"shit-list","version":"0.0.0+f8e62154"});
 }
 
 /* jshint ignore:end */
